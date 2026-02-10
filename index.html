@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una carta para ti, mi amor</title>
+    <title>Para ti, mi amor ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,151 +15,39 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px;
-            position: relative;
-        }
-
-        .letter {
-            background: #fefefe;
-            padding: 60px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            transform: translateY(20px);
-            animation: slideIn 1s ease-out forwards;
-        }
-
-        @keyframes slideIn {
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .letter::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            border-radius: 20px;
-            z-index: -1;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .date {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .title {
-            font-size: 36px;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1s forwards;
-        }
-
-        .content {
-            line-height: 1.8;
-            font-size: 18px;
-            color: #444;
-            text-align: justify;
-            margin-bottom: 40px;
-        }
-
-        .paragraph {
-            margin-bottom: 25px;
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .paragraph:nth-child(1) { animation: slideText 1s ease-out 1.5s forwards; }
-        .paragraph:nth-child(2) { animation: slideText 1s ease-out 2s forwards; }
-        .paragraph:nth-child(3) { animation: slideText 1s ease-out 2.5s forwards; }
-
-        @keyframes slideText {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .signature {
-            text-align: right;
-            font-size: 20px;
-            color: #e74c3c;
-            font-style: italic;
-            margin-top: 40px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 3s forwards;
-        }
-
-        .hidden-message {
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-size: 12px;
-            color: rgba(231, 76, 60, 0.3);
-            user-select: none;
-            transition: all 0.3s ease;
-        }
-
-        .hidden-message:hover {
-            color: #e74c3c;
-            transform: scale(1.2);
-        }
-
-        .floating-hearts {
+        /* Partículas flotantes de corazones */
+        .hearts-container {
             position: fixed;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
 
         .heart {
             position: absolute;
-            color: rgba(255, 182, 193, 0.6);
             font-size: 20px;
-            animation: float 8s linear infinite;
+            opacity: 0;
+            animation: float-hearts 8s infinite;
         }
 
-        @keyframes float {
+        @keyframes float-hearts {
             0% {
                 transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
                 opacity: 1;
             }
             100% {
@@ -165,58 +56,285 @@
             }
         }
 
-        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
-        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
-        .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
-        .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
-        .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
-        .heart:nth-child(7) { left: 70%; animation-delay: 6s; }
-        .heart:nth-child(8) { left: 80%; animation-delay: 7s; }
-        .heart:nth-child(9) { left: 90%; animation-delay: 8s; }
+        /* Página de bienvenida */
+        .welcome-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-content h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .welcome-content p {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .enter-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Página de la pregunta */
+        .question-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .question-container h2 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .question-container .subtitle {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .heart-decoration {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        .answer-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .no-btn {
+            background: #f0f0f0;
+            color: #666;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .welcome-content p {
+                font-size: 1.2em;
+            }
+
+            .question-container {
+                padding: 40px 30px;
+            }
+
+            .question-container h2 {
+                font-size: 2em;
+            }
+
+            .question-container .subtitle {
+                font-size: 1.1em;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .no-btn {
+                position: static;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="floating-hearts">
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-    </div>
+    <!-- Contenedor de corazones flotantes -->
+    <div class="hearts-container" id="heartsContainer"></div>
 
-    <div class="container">
-        <div class="letter">
-            <div class="header">
-                <div class="date">Con todo mi amor</div>
-                <h1 class="title">Para mi hermosa Flor</h1>
-            </div>
-            
-            <div class="content">
-                <div class="paragraph">
-                    Mi querida Flor, cada día que pasa me doy cuenta de lo afortunado que soy de tenerte en mi vida. Eres como una melodía que nunca deja de sonar en mi corazón, una luz que ilumina hasta los días más oscuros.
-                </div>
-                
-                <div class="paragraph">
-                    Recuerdo el primer día que te vi, y supe inmediatamente que eras especial. Tu sonrisa puede alegrar cualquier momento, y tu risa es mi sonido favorito en todo el mundo. Eres más hermosa que cualquier puesta de sol, más brillante que todas las estrellas juntas.
-                </div>
-                
-                <div class="paragraph">
-                    Quiero que sepas que mi amor por ti crece cada día. Eres mi presente más preciado, mi futuro más deseado, y mi razón para sonreír cada mañana. Gracias por ser tú, por amarme como lo haces, y por hacer de mi vida algo extraordinario.
-                </div>
-            </div>
-            
-            <div class="signature">
-                Con todo mi amor,<br>
-                Usiel ♥
-            </div>
-            
-            <div class="hidden-message">AMOR</div>
+    <!-- Página de bienvenida -->
+    <div class="welcome-page" id="welcomePage">
+        <div class="welcome-content">
+            <h1>✨ Bienvenida mi vida ✨</h1>
+            <p>Tengo algo muy especial que preguntarte...</p>
+            <button class="enter-btn" onclick="showQuestion()">Continuar ❤️</button>
         </div>
     </div>
+
+    <!-- Página de la pregunta -->
+    <div class="question-page" id="questionPage">
+        <div class="question-container">
+            <h2>Mi amor...</h2>
+            <div class="heart-decoration">💕</div>
+            <p class="subtitle">¿Quieres ser mi San Valentín?</p>
+            <div class="buttons-container">
+                <button class="answer-btn yes-btn" onclick="goToLetter()">¡Sí! 💖</button>
+                <button class="answer-btn no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartSymbols = ['❤️', '💕', '💖', '💗', '💓', '💝'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 800);
+        }
+
+        createHearts();
+
+        // Mostrar página de pregunta
+        function showQuestion() {
+            document.getElementById('welcomePage').style.display = 'none';
+            document.getElementById('questionPage').style.display = 'flex';
+        }
+
+        // Mover botón "No"
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.querySelector('.question-container');
+            
+            const maxX = container.offsetWidth - btn.offsetWidth - 100;
+            const maxY = container.offsetHeight - btn.offsetHeight - 100;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btn.style.position = 'absolute';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        // Ir a la carta de amor
+        function goToLetter() {
+            window.location.href = 'carta.html';
+        }
+    </script>
 </body>
 </html>
