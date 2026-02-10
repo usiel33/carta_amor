@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti, con todo mi amor ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Partículas flotantes */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: float-hearts 8s infinite;
+        }
+
+        @keyframes float-hearts {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Título de celebración */
+        .celebration-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .celebration-title h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .celebration-title p {
+            font-size: 1.3em;
+            font-weight: 400;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Carta de amor */
+        .letter-container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            animation: slideUp 1s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-container::before {
+            content: '💌';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .letter-header h2 {
+            font-size: 2.5em;
+            color: #764ba2;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .letter-header .date {
+            font-size: 1.1em;
+            color: #888;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .letter-content {
+            line-height: 2;
+            font-size: 1.15em;
+            color: #333;
+            text-align: justify;
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+        }
+
+        .letter-content p:first-of-type::first-letter {
+            font-size: 3em;
+            font-weight: 700;
+            color: #667eea;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+            margin-top: 5px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 1.3em;
+            color: #764ba2;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Video container */
+        .video-container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .video-container h3 {
+            font-size: 2em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        /* Instrucciones para el video */
+        .video-instructions {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .video-instructions h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .video-instructions p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .video-instructions code {
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #764ba2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .celebration-title h1 {
+                font-size: 2em;
+            }
+
+            .celebration-title p {
+                font-size: 1.1em;
+            }
+
+            .letter-container {
+                padding: 40px 25px;
+            }
+
+            .letter-header h2 {
+                font-size: 2em;
+            }
+
+            .letter-content {
+                font-size: 1.05em;
+                line-height: 1.8;
+            }
+
+            .video-container {
+                padding: 25px;
+            }
+
+            .video-container h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor de corazones flotantes -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <div class="container">
+        <!-- Título de celebración -->
+        <div class="celebration-title">
+            <h1>¡Sabía que dirías que sí! 💕</h1>
+            <p>Eres lo mejor que me ha pasado</p>
+        </div>
+
+        <!-- Carta de amor -->
+        <div class="letter-container">
+            <div class="letter-header">
+                <h2>Para ti, mi amor</h2>
+                <p class="date">San Valentín 2026</p>
+            </div>
+
+            <div class="letter-content">
+                <p>
+                    Mi vida, hay tantas cosas que quiero decirte, pero las palabras a veces se quedan cortas para expresar todo lo que siento por ti. Desde el momento en que te conocí, mi mundo cambió por completo. Trajiste luz a mis días, alegría a mi corazón y un amor que nunca imaginé que podría sentir.
+                </p>
+
+                <p>
+                    Sé que la distancia no ha sido fácil, que hemos enfrentado dificultades y momentos complicados. Pero quiero que sepas que cada obstáculo que hemos superado juntos solo ha fortalecido mi amor por ti. La distancia física no es nada comparado con la cercanía que siento en mi corazón cada vez que pienso en ti.
+                </p>
+
+                <p>
+                    Agradezco cada día por haberte conocido, por cada mensaje, cada llamada, cada sonrisa que me regalas incluso a través de una pantalla. Eres mi persona favorita, mi mejor amiga, mi confidente, mi todo. Contigo he aprendido que el amor verdadero no conoce de distancias ni de barreras.
+                </p>
+
+                <p>
+                    Quiero que sepas que te amo con todo mi ser, que eres la razón de mi felicidad y que no hay nada en este mundo que desee más que estar contigo. Eres mi presente y quiero que seas mi futuro. Gracias por amarme, por confiar en mí, por elegirme cada día.
+                </p>
+
+                <p>
+                    Este San Valentín es especial porque lo paso contigo, aunque sea de esta manera. Porque donde estés tú, ahí está mi hogar. Te amo hoy, mañana y siempre.
+                </p>
+
+                <p class="signature">
+                    Con todo mi amor,<br>
+                    Usiel 💖
+                </p>
+            </div>
+        </div>
+
+        <!-- Contenedor del video -->
+        <div class="video-container">
+            <h3>Un mensaje especial para ti 🎥</h3>
+            
+            <div class="video-wrapper">
+                <!-- OPCIÓN 1: Para videos de YouTube -->
+                <!-- Descomenta esta línea y reemplaza VIDEO_ID con el ID de tu video de YouTube -->
+                <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                
+                <!-- OPCIÓN 2: Para videos locales (MP4, WebM, etc.) -->
+                <!-- Descomenta estas líneas y reemplaza 'tu-video.mp4' con el nombre de tu archivo -->
+                <!-- <video controls>
+                    <source src="tu-video.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video> -->
+                
+                <!-- OPCIÓN 3: Para videos de Google Drive -->
+                <!-- Descomenta esta línea y reemplaza FILE_ID con el ID de tu archivo de Google Drive -->
+                <!-- <iframe src="https://drive.google.com/file/d/FILE_ID/preview" frameborder="0" allowfullscreen></iframe> -->
+            </div>
+
+            <div class="video-instructions">
+                <h4>📝 Instrucciones para agregar tu video:</h4>
+                <p><strong>Opción 1 - YouTube:</strong> Si subes tu video a YouTube, descomenta la línea del iframe de YouTube y reemplaza <code>VIDEO_ID</code> con el ID de tu video (está en la URL después de "watch?v=").</p>
+                
+                <p><strong>Opción 2 - Video Local:</strong> Si tienes el video en tu computadora, coloca el archivo en la misma carpeta que estos archivos HTML y descomenta la sección de <code>&lt;video&gt;</code>. Reemplaza <code>tu-video.mp4</code> con el nombre real de tu archivo.</p>
+                
+                <p><strong>Opción 3 - Google Drive:</strong> Sube tu video a Google Drive, haz clic derecho → "Obtener enlace" → asegúrate de que esté configurado como "Cualquier persona con el enlace puede ver". Copia el ID del archivo (la parte larga después de "/d/" en la URL) y reemplaza <code>FILE_ID</code> en la línea correspondiente.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartSymbols = ['❤️', '💕', '💖', '💗', '💓', '💝', '🌹'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 800);
+        }
+
+        createHearts();
+    </script>
+</body>
+</html>
